@@ -5,15 +5,15 @@ import { Pokemon } from '../../pokeTypes';
 import FormContainer from '../FormContainer';
 import Header from '../Header';
 import PokemonCards from '../PokemonCards';
+import PokemonModal from '../PokemonModal';
 
 const Home: React.FC = () => {
     const [page, setPage] = React.useState<number>(1);
-
+    const [selectedPokemon, setSelectedPokemon] = React.useState<Pokemon | null>(null);
     const [pokemons, setPokemons] = React.useState<Pokemon[]>([]);
 
     React.useEffect(() => {
         api.list(page).then(pokemons => {
-            console.log('🚀 ➡ api.list ➡ pokemons', pokemons);
             setPokemons(pokemons);
         });
     }, [page]);
@@ -22,8 +22,11 @@ const Home: React.FC = () => {
             <Stack padding={5} spacing={5}>
                 <Header />
                 <FormContainer />
-                <PokemonCards pokemons={pokemons} />
+                <PokemonCards pokemons={pokemons} setSelectedPokemons={setSelectedPokemon} />
             </Stack>
+            {selectedPokemon && (
+                <PokemonModal onClose={() => setSelectedPokemon(null)} selectedPokemon={selectedPokemon} />
+            )}
         </>
     );
 };
