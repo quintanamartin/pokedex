@@ -7,7 +7,7 @@ interface Props {
 }
 const PokemonCards: React.FC<Props> = ({ pokemons }) => {
     return (
-        <SimpleGrid columns={2} gap={3}>
+        <SimpleGrid columns={3} gap={3}>
             {pokemons.map(pokemon => {
                 const { id, name, sprites, types } = pokemon;
                 console.log('🚀 ➡ types', types);
@@ -21,8 +21,8 @@ const PokemonCards: React.FC<Props> = ({ pokemons }) => {
                         spacing={4}
                     >
                         <Stack align='center' direction='row' justify='space-between'>
-                            <Text color='white' fontSize='lg' fontWeight='600'>
-                                {name}
+                            <Text color='white' fontSize='xl' fontWeight='600'>
+                                {name.toUpperCase()}
                             </Text>
                             <Text color={`${types[0].type.name}.600`} marginLeft='auto'>
                                 #{id}
@@ -30,15 +30,20 @@ const PokemonCards: React.FC<Props> = ({ pokemons }) => {
                         </Stack>
                         <Stack direction='row' justifyContent='space-between'>
                             <Stack>
-                                {types.map(type => {
+                                {types.map(badgeType => {
+                                    const { type } = badgeType;
                                     return (
-                                        <Badge key={type.type.name} colorScheme={`${types[0].type.name}.900`}>
-                                            {type.type.name}
+                                        <Badge key={type.name} colorScheme={`${type.name}.600`}>
+                                            {type.name}
                                         </Badge>
                                     );
                                 })}
                             </Stack>
-                            <Image height={24} src={sprites.front_default} width={24} />
+                            <Image
+                                height={24}
+                                src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`}
+                                width={24}
+                            />
                         </Stack>
                     </Stack>
                 );

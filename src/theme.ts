@@ -10,5 +10,7 @@ export default extendTheme({
         water: theme.colors.blue,
         psychic: theme.colors.purple,
         normal: theme.colors.gray,
+        ground: theme.colors.blackAlpha,
+        poison: theme.colors.pink,
     },
 });
