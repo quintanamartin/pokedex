@@ -1,20 +1,6 @@
 import * as React from 'react';
-import {
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
-    useDisclosure,
-    Button,
-    Image,
-    Box,
-    Center,
-    Fade,
-    Heading,
-} from '@chakra-ui/react';
+import { Modal, ModalOverlay, ModalContent, ModalBody, ModalCloseButton, Image, Stack } from '@chakra-ui/react';
+import PokemonData from './PokemonData';
 
 const PokemonModal = ({ onClose, selectedPokemon }: any) => {
     const { id, name, types } = selectedPokemon;
@@ -23,19 +9,21 @@ const PokemonModal = ({ onClose, selectedPokemon }: any) => {
             <Modal isOpen onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
+                    <ModalCloseButton />
                     <ModalBody backgroundColor={types[0].type.name} borderRadius={4}>
-                        <Center>
+                        <Stack>
                             <Image
                                 alignSelf='center'
                                 height={128}
                                 src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`}
                                 width={128}
                                 zIndex={1}
+                                marginBottom={-2}
                             />
-                        </Center>
-                        <Box backgroundColor='white'>
-                            <Heading>{name.toUpperCase()}</Heading>
-                        </Box>
+                        </Stack>
+                        <Stack backgroundColor='white' borderRadius={12} marginTop={-12} padding={8} paddingTop={16}>
+                            <PokemonData selectedPokemon={selectedPokemon} />
+                        </Stack>
                     </ModalBody>
                 </ModalContent>
             </Modal>

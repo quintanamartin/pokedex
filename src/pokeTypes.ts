@@ -9,9 +9,20 @@ export interface Pokemon {
     types: Types[];
     species: string;
     stats: Stats;
+    weight: string;
+    height: string;
+    abilities: Abilities[];
 }
 
 interface Types {
     slot: number;
     type: { name: string; url: string };
+}
+
+interface Abilities {
+    /*  slot: number,
+    is_hidden: boolean, */
+    ability: {
+        name: string;
+    };
 }
