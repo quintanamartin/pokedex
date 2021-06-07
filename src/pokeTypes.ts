@@ -8,7 +8,7 @@ export interface Pokemon {
     };
     types: Types[];
     species: string;
-    stats: Stats;
+    stats: Stats[];
     weight: string;
     height: string;
     abilities: Abilities[];

@@ -20,14 +20,15 @@ import {
     ListItem,
     ListIcon,
     List,
+    Progress,
+    Box,
 } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
 type Props = {
     selectedPokemon: Pokemon;
 };
 const PokemonData: React.FC<Props> = ({ selectedPokemon }: Props) => {
-    console.log('🚀 ➡ selectedPokemon', selectedPokemon);
-    const { name, id, height, weight, abilities, types } = selectedPokemon;
+    const { name, id, height, weight, abilities, types, stats } = selectedPokemon;
     const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1);
     return (
         <Tabs variant='soft-rounded'>
@@ -83,7 +84,23 @@ const PokemonData: React.FC<Props> = ({ selectedPokemon }: Props) => {
                     </Stack>
                 </TabPanel>
                 <TabPanel>
-                    <p>two!</p>
+                    <Box as='table'>
+                        <tbody>
+                            {Object.entries(stats).map(([title, value]: any) => {
+                                console.log('🚀 ➡ {Object.entries ➡ value', value);
+                                return (
+                                    <tr key={title}>
+                                        <Text as='td' paddingY={1} width='15%'>
+                                            {value.stat.name}
+                                        </Text>
+                                        <Box as='td' paddingY={1} width='45%'>
+                                            <Progress size='xs' value={value.base_stat} />
+                                        </Box>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </Box>
                 </TabPanel>
             </TabPanels>
         </Tabs>
