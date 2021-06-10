@@ -16,7 +16,7 @@ const Footer = () => {
       >
         <Text>© 2021 Martin Quintana. All rights reserved</Text>
         <Stack direction={"row"} spacing={6}>
-          <Box href={"#"} label={"Twitter"}>
+          <Box href={"https://twitter.com/mquintana1988"} label={"Twitter"}>
             <FaTwitter />
           </Box>
           <Box href={"#"} label={"YouTube"}>
