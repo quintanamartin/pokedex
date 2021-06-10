@@ -3,6 +3,7 @@ import * as React from "react";
 
 import api from "../../api";
 import {Pokemon} from "../../pokeTypes";
+import Footer from "../Footer";
 import FormContainer from "../FormContainer";
 import Header from "../Header";
 import PokemonCards from "../PokemonCards";
@@ -25,6 +26,7 @@ const Home: React.FC = () => {
         <Header />
         <FormContainer />
         <PokemonCards pokemons={pokemons} setSelectedPokemons={setSelectedPokemon} />
+        <Footer />
       </Stack>
       {selectedPokemon && (
         <PokemonModal selectedPokemon={selectedPokemon} onClose={() => setSelectedPokemon(null)} />

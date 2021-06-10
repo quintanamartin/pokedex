@@ -20,8 +20,6 @@ interface Types {
 }
 
 interface Abilities {
-  /*  slot: number,
-    is_hidden: boolean, */
   ability: {
     name: string;
   };
