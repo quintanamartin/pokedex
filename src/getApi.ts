@@ -3,7 +3,7 @@ import {Pokemon} from "./pokeTypes";
 const pageSize = 30;
 const url = "https://pokeapi.co/api/v2/pokemon/";
 
-export default {
+const getAllPokemons = {
   list: (page = 1): Promise<Pokemon[]> => {
     return Promise.all(
       new Array(page * pageSize + 1)
@@ -14,3 +14,5 @@ export default {
     );
   },
 };
+
+export default getAllPokemons;

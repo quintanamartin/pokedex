@@ -12,7 +12,7 @@ const PokemonCards: React.FC<Props> = ({pokemons, setSelectedPokemons}) => {
     <Flex>
       <SimpleGrid columns={3} gap={3} w="100%">
         {pokemons.map((pokemon) => {
-          const {id, name, sprites, types} = pokemon;
+          const {id, name, types} = pokemon;
 
           return (
             <Stack
