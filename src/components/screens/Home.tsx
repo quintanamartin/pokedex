@@ -9,13 +9,14 @@ import Header from "../Header";
 import PokemonCards from "../PokemonCards";
 import PokemonModal from "../PokemonModal";
 
+
 const Home: React.FC = () => {
-  const [page, setPage] = React.useState<number>(3);
+  const [page, setPage] = React.useState<number>();
   const [selectedPokemon, setSelectedPokemon] = React.useState<Pokemon | null>(null);
   const [pokemons, setPokemons] = React.useState<Pokemon[]>([]);
-  const [search, setSearch] = React.useState<Pokemon[]>([]);
+  const [pokemonToSearch, setPokemonToSearch] = React.useState<any>("");
+  const [search, setSearch] = React.useState<Pokemon[]>([])
 
-  console.log(search);
   React.useEffect(() => {
     getAllPokemons.list(page).then((pokemons) => {
       setPokemons(pokemons);
@@ -23,18 +24,25 @@ const Home: React.FC = () => {
   }, []);
 
   React.useEffect(() => {
-    if (Object.keys(search).length > 0) {
-      console.log("entro al useEffect");
-      setPokemons(search);
-    }
-  }, [search]);
+    const list = pokemons.filter(pokemon => {
+      return pokemon.name.includes(pokemonToSearch)
+    })
+    setSearch(list)
+  },[pokemonToSearch])
+
 
   return (
     <>
       <Stack padding={5} spacing={5}>
         <Header />
-        <FormContainer setPokemon={setSearch} />
-        <PokemonCards pokemons={pokemons} setSelectedPokemons={setSelectedPokemon} />
+        <FormContainer setPokemonToSearch={setPokemonToSearch} pokemonToSearch={pokemonToSearch}/>
+        { 
+          search.length > 0
+            ?
+              <PokemonCards pokemons={search} setSelectedPokemons={setSelectedPokemon} /> 
+            : 
+              <PokemonCards pokemons={pokemons} setSelectedPokemons={setSelectedPokemon} /> 
+        }
         <Footer />
       </Stack>
       {selectedPokemon && (

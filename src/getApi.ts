@@ -1,6 +1,6 @@
 import {Pokemon} from "./pokeTypes";
 
-const pageSize = 30;
+const pageSize = 151;
 const url = "https://pokeapi.co/api/v2/pokemon/";
 
 const getAllPokemons = {

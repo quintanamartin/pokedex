@@ -10,7 +10,7 @@ interface Props {
 const PokemonCards: React.FC<Props> = ({pokemons, setSelectedPokemons}) => {
   return (
     <Flex>
-      <SimpleGrid columns={3} gap={3} w="100%">
+      <SimpleGrid columns={4} gap={3} w="100%">
         {pokemons.map((pokemon) => {
           const {id, name, types} = pokemon;
 
