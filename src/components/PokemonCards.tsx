@@ -1,13 +1,13 @@
-import {Stack, Text, Image, Box, SimpleGrid, Badge, Flex} from "@chakra-ui/react";
+import {Stack, Text, Image, SimpleGrid, Badge, Flex} from "@chakra-ui/react";
 import * as React from "react";
 
 import {Pokemon} from "../pokeTypes";
 
-interface Props {
+type MyProps = {
   pokemons: Pokemon[];
-  setSelectedPokemons: any;
-}
-const PokemonCards: React.FC<Props> = ({pokemons, setSelectedPokemons}) => {
+  setSelectedPokemons: (value: Pokemon) => void;
+};
+const PokemonCards: React.FC<MyProps> = ({pokemons, setSelectedPokemons}: MyProps) => {
   return (
     <Flex>
       <SimpleGrid columns={4} gap={3} w="100%">

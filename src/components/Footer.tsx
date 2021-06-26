@@ -2,7 +2,7 @@ import {Box, Container, Stack, Text} from "@chakra-ui/react";
 import {FaLinkedin, FaTwitter} from "react-icons/fa";
 import React from "react";
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <Box borderColor={"green.100"} borderStyle={"solid"} borderTopWidth={1}>
       <Container

@@ -9,9 +9,15 @@ import {
   Stack,
 } from "@chakra-ui/react";
 
-import PokemonData from "./PokemonData";
+import {Pokemon} from "../pokeTypes";
 
-const PokemonModal = ({onClose, selectedPokemon}: any) => {
+import PokemonData from "./PokemonData";
+type MyProps = {
+  onClose: () => void;
+  selectedPokemon: Pokemon;
+};
+
+const PokemonModal: React.FC<MyProps> = ({onClose, selectedPokemon}: MyProps) => {
   const {id, types} = selectedPokemon;
 
   return (
